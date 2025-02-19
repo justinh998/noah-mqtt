@@ -82,10 +82,12 @@ func runApp(cfg config.Config, client mqtt.Client) {
 	case "web":
 		slog.Info("setting mode", slog.String("mode", mode))
 		growattService := growatt_web.NewGrowattService(growatt_web.Options{
-			ServerUrl:       cfg.Growatt.ServerUrlWeb,
-			Username:        cfg.Growatt.Username,
-			Password:        cfg.Growatt.Password,
-			PollingInterval: cfg.PollingInterval,
+			ServerUrl:                     cfg.Growatt.ServerUrlWeb,
+			Username:                      cfg.Growatt.Username,
+			Password:                      cfg.Growatt.Password,
+			PollingInterval:               cfg.PollingInterval,
+			BatteryDetailsPollingInterval: cfg.BatteryDetailsPollingInterval,
+			ParameterPollingInterval:      cfg.ParameterPollingInterval,
 		})
 
 		growattService.AddEndpoint(mqttEndpoint)
@@ -100,10 +102,12 @@ func runApp(cfg config.Config, client mqtt.Client) {
 	case "web+app":
 		slog.Info("setting mode", slog.String("mode", mode))
 		growattService := growatt_web.NewGrowattService(growatt_web.Options{
-			ServerUrl:       cfg.Growatt.ServerUrlWeb,
-			Username:        cfg.Growatt.Username,
-			Password:        cfg.Growatt.Password,
-			PollingInterval: cfg.PollingInterval,
+			ServerUrl:                     cfg.Growatt.ServerUrlWeb,
+			Username:                      cfg.Growatt.Username,
+			Password:                      cfg.Growatt.Password,
+			PollingInterval:               cfg.PollingInterval,
+			BatteryDetailsPollingInterval: cfg.BatteryDetailsPollingInterval,
+			ParameterPollingInterval:      cfg.ParameterPollingInterval,
 		})
 
 		growattService.AddEndpoint(mqttEndpoint)
